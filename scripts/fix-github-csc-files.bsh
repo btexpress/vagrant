@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Script:  fix-github-files.bsh
+# 
+# When pulling down scripts from github.csc.com, they are appened by
+# a long string that starts with "?token=".  This scripts remove it.
+
+OLDNAME=`ls *?token=*` 2> /dev/null
+if [ $? -ne 0 ]; then
+    echo "No files to convert"
+    exit 1
+fi
+
+for OLDNAME in `ls *?token=*`
+do
+	NEWNAME=`ls $OLDNAME | awk -F'?token=' '{print $1}'`
+	mv $OLDNAME $NEWNAME
+done
