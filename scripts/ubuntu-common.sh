@@ -5,4 +5,4 @@ apt-get update -y
 apt-get upgrade -y
 
 # Tools
-apt-get install -y git unzip screen nc telnet
+apt-get install -y git unzip screen telnet
